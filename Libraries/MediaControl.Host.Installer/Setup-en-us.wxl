@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<WixLocalization Culture="en-us" xmlns="http://schemas.microsoft.com/wix/2006/localization">
+  <String Id="LaunchCondition_AdminPrivs">You must have Administrative rights on this machine to install [ProductName].</String>
+  <String Id="LaunchCondition_LaterVersion">A later version of [ProductName] is already installed.</String>
+  <String Id="LaunchCondition_WrongOSVersion">[ProductName] can only be installed on Microsoft Windows Vista or higher.</String>
+  <String Id="LaunchCondition_WrongDotNetVersion">[ProductName] requires Microsoft .NET Framework 3.5 SP1 to be installed. Please see http://www.sharkfistsoftware.com/remotive/ for more details.</String>
+  <String Id="Property_ArpHelpLink">http://www.sharkfistsoftware.com/Remotive</String>
+  <String Id="Property_ArpUrlInfoAbout">http://www.sharkfistsoftware.com/Remotive</String>
+  <String Id="Property_ProductLanguage">1033</String>
+  <String Id="Property_ProductName">Remotive Server</String>
+  <String Id="Property_CompanyName">Sharkfist Software, LLC</String>
+  <String Id="Package_Description">Remotive Server is the server-side component for the Remotive mobile application.</String>
+  <String Id="Package_Comments">.</String>
+</WixLocalization>

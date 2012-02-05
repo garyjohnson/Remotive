@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://www.ggjonline.com/ServiceModel/MediaControl" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.ggjonline.com/ServiceModel/MediaControl" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.ggjonline.com/ServiceModel/MediaControl/Imports">
+      <xsd:import namespace="http://www.ggjonline.com/ServiceModel/MediaControl" />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/MediaControl.Common.Music" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IMediaLibraryService_GetAlbumsByArtist_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAlbumsByArtist" />
+  </wsdl:message>
+  <wsdl:message name="IMediaLibraryService_GetAlbumsByArtist_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAlbumsByArtistResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMediaLibraryService_GetTracks_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTracks" />
+  </wsdl:message>
+  <wsdl:message name="IMediaLibraryService_GetTracks_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTracksResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMediaLibraryService_GetTracksByArtist_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTracksByArtist" />
+  </wsdl:message>
+  <wsdl:message name="IMediaLibraryService_GetTracksByArtist_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTracksByArtistResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMediaLibraryService_GetTracksByAlbumArtist_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTracksByAlbumArtist" />
+  </wsdl:message>
+  <wsdl:message name="IMediaLibraryService_GetTracksByAlbumArtist_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTracksByAlbumArtistResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMediaLibraryService_GetAlbumArtByTrack_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAlbumArtByTrack" />
+  </wsdl:message>
+  <wsdl:message name="IMediaLibraryService_GetAlbumArtByTrack_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAlbumArtByTrackResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMediaLibraryService_GetAlbumArtByAlbum_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAlbumArtByAlbum" />
+  </wsdl:message>
+  <wsdl:message name="IMediaLibraryService_GetAlbumArtByAlbum_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAlbumArtByAlbumResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMediaLibraryService_GetCapabilities_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCapabilities" />
+  </wsdl:message>
+  <wsdl:message name="IMediaLibraryService_GetCapabilities_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCapabilitiesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMediaLibraryService_Ping_InputMessage">
+    <wsdl:part name="parameters" element="tns:Ping" />
+  </wsdl:message>
+  <wsdl:message name="IMediaLibraryService_Ping_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PingResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMediaLibraryService_GetAlbumArtistCount_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAlbumArtistCount" />
+  </wsdl:message>
+  <wsdl:message name="IMediaLibraryService_GetAlbumArtistCount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAlbumArtistCountResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMediaLibraryService_GetAlbumArtistRange_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAlbumArtistRange" />
+  </wsdl:message>
+  <wsdl:message name="IMediaLibraryService_GetAlbumArtistRange_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAlbumArtistRangeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMediaLibraryService_GetArtistCount_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetArtistCount" />
+  </wsdl:message>
+  <wsdl:message name="IMediaLibraryService_GetArtistCount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetArtistCountResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMediaLibraryService_GetArtistRange_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetArtistRange" />
+  </wsdl:message>
+  <wsdl:message name="IMediaLibraryService_GetArtistRange_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetArtistRangeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMediaLibraryService_GetAlbumCount_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAlbumCount" />
+  </wsdl:message>
+  <wsdl:message name="IMediaLibraryService_GetAlbumCount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAlbumCountResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMediaLibraryService_GetAlbumRange_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAlbumRange" />
+  </wsdl:message>
+  <wsdl:message name="IMediaLibraryService_GetAlbumRange_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAlbumRangeResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IMediaLibraryService">
+    <wsdl:operation name="GetAlbumsByArtist">
+      <wsdl:input wsaw:Action="http://www.ggjonline.com/ServiceModel/MediaControl/IMediaLibraryService/GetAlbumsByArtist" message="tns:IMediaLibraryService_GetAlbumsByArtist_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.ggjonline.com/ServiceModel/MediaControl/IMediaLibraryService/GetAlbumsByArtistResponse" message="tns:IMediaLibraryService_GetAlbumsByArtist_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTracks">
+      <wsdl:input wsaw:Action="http://www.ggjonline.com/ServiceModel/MediaControl/IMediaLibraryService/GetTracks" message="tns:IMediaLibraryService_GetTracks_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.ggjonline.com/ServiceModel/MediaControl/IMediaLibraryService/GetTracksResponse" message="tns:IMediaLibraryService_GetTracks_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTracksByArtist">
+      <wsdl:input wsaw:Action="http://www.ggjonline.com/ServiceModel/MediaControl/IMediaLibraryService/GetTracksByArtist" message="tns:IMediaLibraryService_GetTracksByArtist_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.ggjonline.com/ServiceModel/MediaControl/IMediaLibraryService/GetTracksByArtistResponse" message="tns:IMediaLibraryService_GetTracksByArtist_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTracksByAlbumArtist">
+      <wsdl:input wsaw:Action="http://www.ggjonline.com/ServiceModel/MediaControl/IMediaLibraryService/GetTracksByAlbumArtist" message="tns:IMediaLibraryService_GetTracksByAlbumArtist_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.ggjonline.com/ServiceModel/MediaControl/IMediaLibraryService/GetTracksByAlbumArtistResponse" message="tns:IMediaLibraryService_GetTracksByAlbumArtist_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAlbumArtByTrack">
+      <wsdl:input wsaw:Action="http://www.ggjonline.com/ServiceModel/MediaControl/IMediaLibraryService/GetAlbumArtByTrack" message="tns:IMediaLibraryService_GetAlbumArtByTrack_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.ggjonline.com/ServiceModel/MediaControl/IMediaLibraryService/GetAlbumArtByTrackResponse" message="tns:IMediaLibraryService_GetAlbumArtByTrack_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAlbumArtByAlbum">
+      <wsdl:input wsaw:Action="http://www.ggjonline.com/ServiceModel/MediaControl/IMediaLibraryService/GetAlbumArtByAlbum" message="tns:IMediaLibraryService_GetAlbumArtByAlbum_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.ggjonline.com/ServiceModel/MediaControl/IMediaLibraryService/GetAlbumArtByAlbumResponse" message="tns:IMediaLibraryService_GetAlbumArtByAlbum_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCapabilities">
+      <wsdl:input wsaw:Action="http://www.ggjonline.com/ServiceModel/MediaControl/IMediaLibraryService/GetCapabilities" message="tns:IMediaLibraryService_GetCapabilities_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.ggjonline.com/ServiceModel/MediaControl/IMediaLibraryService/GetCapabilitiesResponse" message="tns:IMediaLibraryService_GetCapabilities_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Ping">
+      <wsdl:input wsaw:Action="http://www.ggjonline.com/ServiceModel/MediaControl/IMediaLibraryService/Ping" message="tns:IMediaLibraryService_Ping_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.ggjonline.com/ServiceModel/MediaControl/IMediaLibraryService/PingResponse" message="tns:IMediaLibraryService_Ping_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAlbumArtistCount">
+      <wsdl:input wsaw:Action="http://www.ggjonline.com/ServiceModel/MediaControl/IMediaLibraryService/GetAlbumArtistCount" message="tns:IMediaLibraryService_GetAlbumArtistCount_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.ggjonline.com/ServiceModel/MediaControl/IMediaLibraryService/GetAlbumArtistCountResponse" message="tns:IMediaLibraryService_GetAlbumArtistCount_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAlbumArtistRange">
+      <wsdl:input wsaw:Action="http://www.ggjonline.com/ServiceModel/MediaControl/IMediaLibraryService/GetAlbumArtistRange" message="tns:IMediaLibraryService_GetAlbumArtistRange_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.ggjonline.com/ServiceModel/MediaControl/IMediaLibraryService/GetAlbumArtistRangeResponse" message="tns:IMediaLibraryService_GetAlbumArtistRange_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetArtistCount">
+      <wsdl:input wsaw:Action="http://www.ggjonline.com/ServiceModel/MediaControl/IMediaLibraryService/GetArtistCount" message="tns:IMediaLibraryService_GetArtistCount_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.ggjonline.com/ServiceModel/MediaControl/IMediaLibraryService/GetArtistCountResponse" message="tns:IMediaLibraryService_GetArtistCount_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetArtistRange">
+      <wsdl:input wsaw:Action="http://www.ggjonline.com/ServiceModel/MediaControl/IMediaLibraryService/GetArtistRange" message="tns:IMediaLibraryService_GetArtistRange_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.ggjonline.com/ServiceModel/MediaControl/IMediaLibraryService/GetArtistRangeResponse" message="tns:IMediaLibraryService_GetArtistRange_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAlbumCount">
+      <wsdl:input wsaw:Action="http://www.ggjonline.com/ServiceModel/MediaControl/IMediaLibraryService/GetAlbumCount" message="tns:IMediaLibraryService_GetAlbumCount_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.ggjonline.com/ServiceModel/MediaControl/IMediaLibraryService/GetAlbumCountResponse" message="tns:IMediaLibraryService_GetAlbumCount_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAlbumRange">
+      <wsdl:input wsaw:Action="http://www.ggjonline.com/ServiceModel/MediaControl/IMediaLibraryService/GetAlbumRange" message="tns:IMediaLibraryService_GetAlbumRange_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.ggjonline.com/ServiceModel/MediaControl/IMediaLibraryService/GetAlbumRangeResponse" message="tns:IMediaLibraryService_GetAlbumRange_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

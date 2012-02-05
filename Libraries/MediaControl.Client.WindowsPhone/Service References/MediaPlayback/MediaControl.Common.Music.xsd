@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/MediaControl.Common.Music" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/MediaControl.Common.Music" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="MediaState">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CurrentTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="CurrentTrack" nillable="true" type="tns:Track" />
+      <xs:element minOccurs="0" name="PlaybackPosition" type="ser:duration" />
+      <xs:element minOccurs="0" name="PlaybackState" type="tns:PlaybackState" />
+      <xs:element minOccurs="0" name="Volume" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MediaState" nillable="true" type="tns:MediaState" />
+  <xs:complexType name="Track">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AlbumName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ArtistName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Duration" type="ser:duration" />
+      <xs:element minOccurs="0" name="FilePath" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TrackNumber" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Track" nillable="true" type="tns:Track" />
+  <xs:simpleType name="PlaybackState">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Unknown" />
+      <xs:enumeration value="Stop" />
+      <xs:enumeration value="Play" />
+      <xs:enumeration value="Pause" />
+      <xs:enumeration value="FastFoward" />
+      <xs:enumeration value="FastFoward2" />
+      <xs:enumeration value="FastFoward3" />
+      <xs:enumeration value="Rewind" />
+      <xs:enumeration value="Rewind2" />
+      <xs:enumeration value="Rewind3" />
+      <xs:enumeration value="SlowMotion" />
+      <xs:enumeration value="SlowMotion2" />
+      <xs:enumeration value="SlowMotion3" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="PlaybackState" nillable="true" type="tns:PlaybackState" />
+  <xs:complexType name="ArrayOfTrack">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Track" nillable="true" type="tns:Track" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTrack" nillable="true" type="tns:ArrayOfTrack" />
+  <xs:complexType name="Artist">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Artist" nillable="true" type="tns:Artist" />
+  <xs:complexType name="AlbumArtist">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Albums" nillable="true" type="tns:ArrayOfAlbum" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AlbumArtist" nillable="true" type="tns:AlbumArtist" />
+  <xs:complexType name="ArrayOfAlbum">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Album" nillable="true" type="tns:Album" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAlbum" nillable="true" type="tns:ArrayOfAlbum" />
+  <xs:complexType name="Album">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AlbumArt" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="ArtistName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Genre" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ReleaseYear" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Album" nillable="true" type="tns:Album" />
+  <xs:complexType name="MediaPlaybackCapabilities">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IsPlaybackMidlistAvailable" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsToggleLoopAvailable" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsToggleShuffleAvailable" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MediaPlaybackCapabilities" nillable="true" type="tns:MediaPlaybackCapabilities" />
+</xs:schema>

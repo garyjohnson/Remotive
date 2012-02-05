@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="26cce377-78aa-4e18-972a-5830e9debea7" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>true</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>true</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://vm-win7-x86:8888/MediaLibrary/mex" Protocol="mex" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="MediaControl.wsdl" MetadataType="Wsdl" ID="218c740c-e73f-4a33-893f-fabd28d02f77" SourceId="1" SourceUrl="http://vm-win7-x86:8888/MediaLibrary/mex" />
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="353b949d-8bcd-4a5a-87ab-70ace7198c60" SourceId="1" SourceUrl="http://vm-win7-x86:8888/MediaLibrary/mex" />
+    <MetadataFile FileName="MediaControl.xsd" MetadataType="Schema" ID="2058b120-ab1e-4279-954b-f89e5c505a20" SourceId="1" SourceUrl="http://vm-win7-x86:8888/MediaLibrary/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="d49b135a-35bb-4837-a555-e1f80b0ab433" SourceId="1" SourceUrl="http://vm-win7-x86:8888/MediaLibrary/mex" />
+    <MetadataFile FileName="MediaControl.Common.Music.xsd" MetadataType="Schema" ID="1573cc45-b94d-4d76-ac8a-4cd0ed5f7174" SourceId="1" SourceUrl="http://vm-win7-x86:8888/MediaLibrary/mex" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

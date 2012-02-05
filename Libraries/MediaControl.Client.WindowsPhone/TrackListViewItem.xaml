@@ -1,0 +1,46 @@
+﻿<this:ListViewItemBase x:Class="MediaControl.Client.WindowsPhone.TrackListViewItem"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:this="clr-namespace:MediaControl.Client.WindowsPhone"
+    xmlns:converters="clr-namespace:MediaControl.Client.WindowsPhone.ValueConverters"
+    xmlns:core="clr-namespace:Sharkfist.Phone.SilverlightCore;assembly=Sharkfist.Phone.SilverlightCore"
+    mc:Ignorable="d" Height="82" x:Name="listViewItem"
+    core:TiltEffect.IsTiltEnabled="True">
+
+    <this:ListViewItemBase.Resources>
+
+        <converters:LeadingZeroConverter x:Key="LeadingZeroConverter"/>
+        <Storyboard x:Name="OnClick">
+        	<DoubleAnimation Duration="0:0:0.1" To="8" Storyboard.TargetProperty="(UIElement.Projection).(PlaneProjection.RotationY)" Storyboard.TargetName="listViewItem" d:IsOptimized="True"/>
+        </Storyboard>
+        <Storyboard x:Name="OnRelease">
+        	<DoubleAnimation Duration="0" To="0" Storyboard.TargetProperty="(UIElement.Projection).(PlaneProjection.RotationY)" Storyboard.TargetName="listViewItem" d:IsOptimized="True"/>
+        </Storyboard>
+
+    </this:ListViewItemBase.Resources>
+	<this:ListViewItemBase.Projection>
+		<PlaneProjection CenterOfRotationX="0.9"/>
+	</this:ListViewItemBase.Projection>
+
+    <Grid>
+    	<Grid.ColumnDefinitions>
+    		<ColumnDefinition Width="80"/>
+    		<ColumnDefinition/>
+    	</Grid.ColumnDefinitions>
+		<TextBlock x:Name="txtTrackNumber" Margin="0,4,15,0" 
+			FontSize="58.667" Foreground="{StaticResource PhoneSubtleBrush}" FontFamily="Segoe WP Light" Text="{Binding TrackNumber, Converter={StaticResource LeadingZeroConverter}, ElementName=listViewItem}" HorizontalAlignment="Center"/>
+		<StackPanel VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Column="1">
+			<TextBlock x:Name="ItemText"  
+				HorizontalAlignment="Left" Margin="-3,0,0,0" Foreground="{StaticResource PhoneForegroundBrush}" 
+				Style="{StaticResource PhoneTextExtraLargeStyle}" Text="{Binding Text, ElementName=listViewItem}"/>
+			<TextBlock x:Name="DetailsText" 
+				HorizontalAlignment="Left" Margin="-1,-8,0,0" Style="{StaticResource PhoneTextSubtleStyle}" Text="{Binding Details, ElementName=listViewItem}" Foreground="{StaticResource PhoneSubtleBrush}" />
+		</StackPanel>
+        
+
+	</Grid>
+        
+
+</this:ListViewItemBase>

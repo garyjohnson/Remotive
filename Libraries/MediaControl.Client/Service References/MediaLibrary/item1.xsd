@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://www.ggjonline.com/ServiceModel/MediaControl" elementFormDefault="qualified" targetNamespace="http://www.ggjonline.com/ServiceModel/MediaControl" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:8888/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/MediaControl.Common.Music" />
+  <xs:element name="GetAlbums">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAlbumsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/MediaControl.Common.Music" minOccurs="0" name="GetAlbumsResult" nillable="true" type="q1:ArrayOfAlbum" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetArtists">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetArtistsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/MediaControl.Common.Music" minOccurs="0" name="GetArtistsResult" nillable="true" type="q2:ArrayOfArtist" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAlbumArtists">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAlbumArtistsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/MediaControl.Common.Music" minOccurs="0" name="GetAlbumArtistsResult" nillable="true" type="q3:ArrayOfArtist" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTracks">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/MediaControl.Common.Music" minOccurs="0" name="album" nillable="true" type="q4:Album" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTracksResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/MediaControl.Common.Music" minOccurs="0" name="GetTracksResult" nillable="true" type="q5:ArrayOfTrack" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,21 @@
+﻿<this:ListViewItemBase x:Class="MediaControl.Client.WindowsPhone.ListViewItem"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:this="clr-namespace:MediaControl.Client.WindowsPhone"
+    xmlns:core="clr-namespace:Sharkfist.Phone.SilverlightCore;assembly=Sharkfist.Phone.SilverlightCore"
+    mc:Ignorable="d" Height="82" x:Name="listViewItem"
+    core:TiltEffect.IsTiltEnabled="True">
+            
+    <Grid x:Name="LayoutRoot">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="1" Margin="12,0,0,0" VerticalAlignment="Center">
+            <TextBlock x:Name="ItemText" Text="{Binding Text, ElementName=listViewItem}"  HorizontalAlignment="Left" Margin="-3,-13,0,0" 
+			Foreground="{StaticResource PhoneForegroundBrush}" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
+        </StackPanel>
+    </Grid>
+   
+</this:ListViewItemBase>

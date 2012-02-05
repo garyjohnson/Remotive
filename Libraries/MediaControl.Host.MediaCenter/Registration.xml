@@ -1,0 +1,9 @@
+﻿<application title="Remotive Server" id="{5639F97F-3FE5-4CD9-B146-1D1FEBB61030}">
+  <entrypoint id="{C9A96444-34B1-4CCB-BA42-74E17BD3B24B}"     
+              addin="MediaControl.Host.MediaCenter.MyAddIn, MediaControl.Host.MediaCenter,Culture=Neutral,Version=1.4.0.0,PublicKeyToken=35ea41ae15d024a8"     
+              title="Remotive Server"     
+              description="Remotive Server is the server-side component for the Remotive mobile application."     
+              ImageUrl=".\Application.png">
+    <category category="Background"/>
+  </entrypoint>
+</application>

@@ -1,0 +1,24 @@
+﻿<configuration>
+    <system.serviceModel>
+        <bindings>
+            <basicHttpBinding>
+                <binding name="BasicHttpBinding_IMediaLibraryService" maxBufferSize="2147483647"
+                    maxReceivedMessageSize="2147483647">
+                    <security mode="None" />
+                </binding>
+                <binding name="BasicHttpBinding_IMediaLibraryService1" maxBufferSize="2147483647"
+                    maxReceivedMessageSize="2147483647">
+                    <security mode="None" />
+                </binding>
+            </basicHttpBinding>
+        </bindings>
+        <client>
+            <endpoint address="http://vm-win7-x86:8888/MediaLibrary" binding="basicHttpBinding"
+                bindingConfiguration="BasicHttpBinding_IMediaLibraryService"
+                contract="MediaLibrary.IMediaLibraryService" name="BasicHttpBinding_IMediaLibraryService" />
+            <endpoint address="http://localhost:8888/MediaLibrary" binding="basicHttpBinding"
+                bindingConfiguration="BasicHttpBinding_IMediaLibraryService1"
+                contract="MediaLibrary.IMediaLibraryService" name="BasicHttpBinding_IMediaLibraryService1" />
+        </client>
+    </system.serviceModel>
+</configuration>

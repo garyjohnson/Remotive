@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="fb52059f-db62-4824-bd97-5b1069bdb290" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>true</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>true</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>false</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8888" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="d0c2ae46-c450-47ba-a2b5-528af2457648" SourceId="1" SourceUrl="http://localhost:8888/?xsd=xsd2" />
+    <MetadataFile FileName="MediaLibraryService.wsdl" MetadataType="Wsdl" ID="97868ed5-2eec-45f7-8749-b1cae7d5a711" SourceId="1" SourceUrl="http://localhost:8888/?wsdl" />
+    <MetadataFile FileName="item.disco" MetadataType="Disco" ID="a3072971-f0e2-4e9e-8cec-c0cfe700c8f4" SourceId="1" SourceUrl="http://localhost:8888/?disco" />
+    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="e6ae8a45-d4a7-4cf1-8d06-98867830c9d5" SourceId="1" SourceUrl="http://localhost:8888/?xsd=xsd0" />
+    <MetadataFile FileName="item.wsdl" MetadataType="Wsdl" ID="b99ac373-a8c8-4e1c-b358-6e395decb562" SourceId="1" SourceUrl="http://localhost:8888/?wsdl=wsdl0" />
+    <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="4282ed8d-77c1-4eef-bc92-ec6e97e747a6" SourceId="1" SourceUrl="http://localhost:8888/?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

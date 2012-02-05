@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://www.ggjonline.com/ServiceModel/MediaControl" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.ggjonline.com/ServiceModel/MediaControl" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.ggjonline.com/ServiceModel/MediaControl/Imports">
+      <xsd:import namespace="http://www.ggjonline.com/ServiceModel/MediaControl" />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/MediaControl.Common.Music" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IMediaPlaybackService_Play_InputMessage">
+    <wsdl:part name="parameters" element="tns:Play" />
+  </wsdl:message>
+  <wsdl:message name="IMediaPlaybackService_Play_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PlayResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMediaPlaybackService_Pause_InputMessage">
+    <wsdl:part name="parameters" element="tns:Pause" />
+  </wsdl:message>
+  <wsdl:message name="IMediaPlaybackService_Pause_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PauseResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMediaPlaybackService_NextTrack_InputMessage">
+    <wsdl:part name="parameters" element="tns:NextTrack" />
+  </wsdl:message>
+  <wsdl:message name="IMediaPlaybackService_NextTrack_OutputMessage">
+    <wsdl:part name="parameters" element="tns:NextTrackResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMediaPlaybackService_PrevTrack_InputMessage">
+    <wsdl:part name="parameters" element="tns:PrevTrack" />
+  </wsdl:message>
+  <wsdl:message name="IMediaPlaybackService_PrevTrack_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PrevTrackResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMediaPlaybackService_PlayTrack_InputMessage">
+    <wsdl:part name="parameters" element="tns:PlayTrack" />
+  </wsdl:message>
+  <wsdl:message name="IMediaPlaybackService_PlayTrack_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PlayTrackResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMediaPlaybackService_GetMediaState_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMediaState" />
+  </wsdl:message>
+  <wsdl:message name="IMediaPlaybackService_GetMediaState_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMediaStateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMediaPlaybackService_PlayTracks_InputMessage">
+    <wsdl:part name="parameters" element="tns:PlayTracks" />
+  </wsdl:message>
+  <wsdl:message name="IMediaPlaybackService_PlayTracks_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PlayTracksResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMediaPlaybackService_PlayArtist_InputMessage">
+    <wsdl:part name="parameters" element="tns:PlayArtist" />
+  </wsdl:message>
+  <wsdl:message name="IMediaPlaybackService_PlayArtist_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PlayArtistResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMediaPlaybackService_PlayAlbumArtist_InputMessage">
+    <wsdl:part name="parameters" element="tns:PlayAlbumArtist" />
+  </wsdl:message>
+  <wsdl:message name="IMediaPlaybackService_PlayAlbumArtist_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PlayAlbumArtistResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMediaPlaybackService_PlayAlbum_InputMessage">
+    <wsdl:part name="parameters" element="tns:PlayAlbum" />
+  </wsdl:message>
+  <wsdl:message name="IMediaPlaybackService_PlayAlbum_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PlayAlbumResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMediaPlaybackService_GetCapabilities_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCapabilities" />
+  </wsdl:message>
+  <wsdl:message name="IMediaPlaybackService_GetCapabilities_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCapabilitiesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMediaPlaybackService_Ping_InputMessage">
+    <wsdl:part name="parameters" element="tns:Ping" />
+  </wsdl:message>
+  <wsdl:message name="IMediaPlaybackService_Ping_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PingResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMediaPlaybackService_SetVolume_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetVolume" />
+  </wsdl:message>
+  <wsdl:message name="IMediaPlaybackService_SetVolume_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetVolumeResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IMediaPlaybackService">
+    <wsdl:operation name="Play">
+      <wsdl:input wsaw:Action="http://www.ggjonline.com/ServiceModel/MediaControl/IMediaPlaybackService/Play" message="tns:IMediaPlaybackService_Play_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.ggjonline.com/ServiceModel/MediaControl/IMediaPlaybackService/PlayResponse" message="tns:IMediaPlaybackService_Play_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Pause">
+      <wsdl:input wsaw:Action="http://www.ggjonline.com/ServiceModel/MediaControl/IMediaPlaybackService/Pause" message="tns:IMediaPlaybackService_Pause_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.ggjonline.com/ServiceModel/MediaControl/IMediaPlaybackService/PauseResponse" message="tns:IMediaPlaybackService_Pause_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="NextTrack">
+      <wsdl:input wsaw:Action="http://www.ggjonline.com/ServiceModel/MediaControl/IMediaPlaybackService/NextTrack" message="tns:IMediaPlaybackService_NextTrack_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.ggjonline.com/ServiceModel/MediaControl/IMediaPlaybackService/NextTrackResponse" message="tns:IMediaPlaybackService_NextTrack_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PrevTrack">
+      <wsdl:input wsaw:Action="http://www.ggjonline.com/ServiceModel/MediaControl/IMediaPlaybackService/PrevTrack" message="tns:IMediaPlaybackService_PrevTrack_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.ggjonline.com/ServiceModel/MediaControl/IMediaPlaybackService/PrevTrackResponse" message="tns:IMediaPlaybackService_PrevTrack_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PlayTrack">
+      <wsdl:input wsaw:Action="http://www.ggjonline.com/ServiceModel/MediaControl/IMediaPlaybackService/PlayTrack" message="tns:IMediaPlaybackService_PlayTrack_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.ggjonline.com/ServiceModel/MediaControl/IMediaPlaybackService/PlayTrackResponse" message="tns:IMediaPlaybackService_PlayTrack_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMediaState">
+      <wsdl:input wsaw:Action="http://www.ggjonline.com/ServiceModel/MediaControl/IMediaPlaybackService/GetMediaState" message="tns:IMediaPlaybackService_GetMediaState_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.ggjonline.com/ServiceModel/MediaControl/IMediaPlaybackService/GetMediaStateResponse" message="tns:IMediaPlaybackService_GetMediaState_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PlayTracks">
+      <wsdl:input wsaw:Action="http://www.ggjonline.com/ServiceModel/MediaControl/IMediaPlaybackService/PlayTracks" message="tns:IMediaPlaybackService_PlayTracks_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.ggjonline.com/ServiceModel/MediaControl/IMediaPlaybackService/PlayTracksResponse" message="tns:IMediaPlaybackService_PlayTracks_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PlayArtist">
+      <wsdl:input wsaw:Action="http://www.ggjonline.com/ServiceModel/MediaControl/IMediaPlaybackService/PlayArtist" message="tns:IMediaPlaybackService_PlayArtist_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.ggjonline.com/ServiceModel/MediaControl/IMediaPlaybackService/PlayArtistResponse" message="tns:IMediaPlaybackService_PlayArtist_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PlayAlbumArtist">
+      <wsdl:input wsaw:Action="http://www.ggjonline.com/ServiceModel/MediaControl/IMediaPlaybackService/PlayAlbumArtist" message="tns:IMediaPlaybackService_PlayAlbumArtist_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.ggjonline.com/ServiceModel/MediaControl/IMediaPlaybackService/PlayAlbumArtistResponse" message="tns:IMediaPlaybackService_PlayAlbumArtist_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PlayAlbum">
+      <wsdl:input wsaw:Action="http://www.ggjonline.com/ServiceModel/MediaControl/IMediaPlaybackService/PlayAlbum" message="tns:IMediaPlaybackService_PlayAlbum_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.ggjonline.com/ServiceModel/MediaControl/IMediaPlaybackService/PlayAlbumResponse" message="tns:IMediaPlaybackService_PlayAlbum_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCapabilities">
+      <wsdl:input wsaw:Action="http://www.ggjonline.com/ServiceModel/MediaControl/IMediaPlaybackService/GetCapabilities" message="tns:IMediaPlaybackService_GetCapabilities_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.ggjonline.com/ServiceModel/MediaControl/IMediaPlaybackService/GetCapabilitiesResponse" message="tns:IMediaPlaybackService_GetCapabilities_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Ping">
+      <wsdl:input wsaw:Action="http://www.ggjonline.com/ServiceModel/MediaControl/IMediaPlaybackService/Ping" message="tns:IMediaPlaybackService_Ping_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.ggjonline.com/ServiceModel/MediaControl/IMediaPlaybackService/PingResponse" message="tns:IMediaPlaybackService_Ping_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetVolume">
+      <wsdl:input wsaw:Action="http://www.ggjonline.com/ServiceModel/MediaControl/IMediaPlaybackService/SetVolume" message="tns:IMediaPlaybackService_SetVolume_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.ggjonline.com/ServiceModel/MediaControl/IMediaPlaybackService/SetVolumeResponse" message="tns:IMediaPlaybackService_SetVolume_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

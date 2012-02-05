@@ -1,0 +1,46 @@
+﻿<UserControl
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:Sharkfist_Phone_SilverlightCore="clr-namespace:Sharkfist.Phone.SilverlightCore;assembly=Sharkfist.Phone.SilverlightCore" 
+    xmlns:MediaControl_Client_WindowsPhone_ValueConverters="clr-namespace:MediaControl.Client.WindowsPhone.ValueConverters"
+	xmlns:local="clr-namespace:MediaControl.Client.WindowsPhone"
+	mc:Ignorable="d"
+	x:Class="MediaControl.Client.WindowsPhone.AlbumArtistControl"
+	d:DesignWidth="198" d:DesignHeight="132">
+
+	<UserControl.Resources>
+		
+		<MediaControl_Client_WindowsPhone_ValueConverters:DefaultImageConverter x:Key="DefaultImageConverter"/>
+		<DataTemplate x:Key="AlbumTemplate">
+            <local:AlbumControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="75" Height="75" Margin="10,10,10,0"
+                                AlbumID="{Binding ID}" Click="AlbumControl_Click" 
+                                Sharkfist_Phone_SilverlightCore:TiltEffect.IsTiltEnabled="True">
+                <!--<Sharkfist_Phone_SilverlightCore:ContextMenu.ContextMenu>
+                    <Sharkfist_Phone_SilverlightCore:ContextMenu>
+                        <Sharkfist_Phone_SilverlightCore:ContextMenuItem Text="play" Click="play_Click" />
+                        <Sharkfist_Phone_SilverlightCore:ContextMenuItem Text="add to now playing" Click="add_Click"/>
+                    </Sharkfist_Phone_SilverlightCore:ContextMenu>
+                </Sharkfist_Phone_SilverlightCore:ContextMenu.ContextMenu>-->
+            </local:AlbumControl>
+        </DataTemplate>
+		<MediaControl_Client_WindowsPhone_ValueConverters:DefaultTextConverter x:Key="DefaultTextConverter"/>
+	</UserControl.Resources>
+
+	<Grid x:Name="LayoutRoot" Background="Transparent">
+		<Grid d:LayoutOverrides="Width, Height">
+			<StackPanel VerticalAlignment="Top">
+                <ItemsControl x:Name="albums"  ItemsSource="{Binding Albums}" ItemTemplate="{StaticResource AlbumTemplate}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <Sharkfist_Phone_SilverlightCore:ReverseWrapPanel ItemHeight="99" ItemWidth="99"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl> 
+                <TextBlock TextWrapping="Wrap" Text="{Binding Name, ConverterParameter=Unknown Artist, Converter={StaticResource DefaultTextConverter}}" 
+                           Margin="12,-10,0,0" FontSize="{StaticResource PhoneFontSizeLarge}" FontFamily="{StaticResource PhoneFontFamilyLight}"/>
+			</StackPanel>
+		</Grid>
+	</Grid>
+</UserControl>

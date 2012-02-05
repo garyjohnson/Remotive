@@ -1,0 +1,115 @@
+﻿<navigation:PhoneApplicationPage 
+    x:Class="MediaControl.Client.WindowsPhone.AlbumPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:navigation="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Navigation"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone.Shell"
+    xmlns:mpc="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    SupportedOrientations="Portrait"
+    mc:Ignorable="d" d:DesignHeight="800" d:DesignWidth="480">
+
+    <!--Page transition animation-->
+    <navigation:PhoneApplicationPage.Resources>
+        <Storyboard x:Name="ResetPageTransitionList">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="TitleGrid" Storyboard.TargetProperty="(UIElement.Projection).(PlaneProjection.RotationY)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="TitleGrid" Storyboard.TargetProperty="(UIElement.Projection).(PlaneProjection.CenterOfRotationX)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ContentGrid" Storyboard.TargetProperty="(UIElement.Projection).(PlaneProjection.RotationY)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ContentGrid" Storyboard.TargetProperty="(UIElement.Projection).(PlaneProjection.CenterOfRotationX)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Name="PageTransitionList">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="TitleGrid" Storyboard.TargetProperty="(UIElement.Projection).(PlaneProjection.RotationY)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.3" Value="90">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseIn"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="TitleGrid" Storyboard.TargetProperty="(UIElement.Projection).(PlaneProjection.CenterOfRotationX)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.3" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseIn"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ContentGrid" Storyboard.TargetProperty="(UIElement.Projection).(PlaneProjection.RotationY)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.3" Value="90">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseIn"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ContentGrid" Storyboard.TargetProperty="(UIElement.Projection).(PlaneProjection.CenterOfRotationX)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.3" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseIn"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </navigation:PhoneApplicationPage.Resources>
+    
+    <Grid x:Name="LayoutRoot" Background="{StaticResource PhoneBackgroundBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="170"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--This is the name of the application and page title-->
+        <Grid Grid.Row="0" x:Name="TitleGrid">
+            <Grid.Projection>
+                <PlaneProjection/>
+            </Grid.Projection>
+            
+            <TextBlock x:Name="ApplicationName" Text="MEDIA CONTROL" Style="{StaticResource PhoneTextPageTitle1Style}"/>
+            <TextBlock x:Name="ListName" Text="{Binding Album.Title}" Style="{StaticResource PhoneTextPageTitle2Style}"/>
+        
+        </Grid>
+
+        <!--This section is empty. Place new content here Grid.Row="1"-->
+        <Grid Grid.Row="1" x:Name="ContentGrid">
+            <Grid.Projection>
+                <PlaneProjection/>
+            </Grid.Projection>
+
+            <ListBox x:Name="ListBoxOne" ItemsSource="{Binding Tracks}"
+                     SelectionChanged="ListBoxOne_SelectionChanged"
+                     Style="{StaticResource PhoneListBox}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel x:Name="DataTemplateStackPanel" Orientation="Horizontal">
+                            <Border x:Name="DataTemplateBorder" Height="44" Width="44" BorderBrush="White" 
+                                    BorderThickness="2.5" CornerRadius="100" Margin="10,16,0,0" VerticalAlignment="Top">
+                                <Path x:Name="DataTemplatePath" Height="16" Width="11" Fill="White" 
+                                      Stretch="Fill" Margin="4,0,0,0" HorizontalAlignment="Center" 
+                                      VerticalAlignment="Center" UseLayoutRounding="False" 
+                                      Data="M337.59924,129.61948 L337.59924,141.51501 L345.5704,135.87381 z"/>
+                            </Border>
+                            <mpc:ListViewItem Layout="TextAndDetailsWithIcon" Text="{Binding Title}" 
+                                              Details="{Binding ArtistName}" 
+                                              Style="{StaticResource PhoneListBoxItemLayout}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+                <!--<ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <local:FixedSizeVirtualizingStackPanel ItemSize="100" CanVerticallyScroll="True" />
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>-->
+            </ListBox>
+        </Grid>
+    </Grid>
+</navigation:PhoneApplicationPage>

@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<?define Property_ProductVersion = "1.4.0.0" ?>
+<?define Property_ProductCode = "{01582EE8-F203-49EB-A6DE-11C3EA2ACCD7}" ?>
+<?define Property_UpgradeCode = "{C10F38A1-FCA2-4C30-87ED-C3A8D9CC7055}" ?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:util="http://schemas.microsoft.com/wix/UtilExtension"
+     xmlns:fire="http://schemas.microsoft.com/wix/FirewallExtension" >
+  <Product Id="$(var.Property_ProductCode)" UpgradeCode="$(var.Property_UpgradeCode)" Name="!(loc.Property_ProductName)" Language="!(loc.Property_ProductLanguage)" Version="$(var.Property_ProductVersion)" Manufacturer="!(loc.Property_CompanyName)">
+
+    <Package Description="!(loc.Package_Description)" Comments="!(loc.Package_Comments)" InstallerVersion="200" Compressed="yes" />
+    
+    <Upgrade Id="$(var.Property_UpgradeCode)">
+      <UpgradeVersion Minimum="$(var.Property_ProductVersion)" OnlyDetect="yes" Property="NEWERVERSIONDETECTED" />
+      <UpgradeVersion Minimum="1.0.0.0" IncludeMinimum="yes" Maximum="$(var.Property_ProductVersion)" IncludeMaximum="no" Property="OLDERVERSIONBEINGUPGRADED" />
+    </Upgrade>
+    <CustomAction Id="CA_BlockOlderVersionInstall" Error="!(loc.LaunchCondition_LaterVersion)" />
+    <CustomAction Id="CA_ErrWrongDotNetVersion" Error="!(loc.LaunchCondition_WrongDotNetVersion)"/>
+    <CustomAction Id="CA_ErrWrongWindowsVersion" Error="!(loc.LaunchCondition_WrongOSVersion)" />
+    <Condition Message="!(loc.LaunchCondition_AdminPrivs)">    <![CDATA[Privileged]]>   </Condition>
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="WindowsFolder" Name="WINDOWS">
+        <Directory Id="EhomeFolder" Name="eHome"/>
+      </Directory>
+      <Directory Id="ProgramFilesFolder" Name="Program Files">
+        <Directory Id="PFilesMyCompany" Name="Sharkfist">
+          <Directory Id="ROOTDIRECTORY" Name="Remotive Server"/>
+        </Directory>
+      </Directory>
+    </Directory>
+    
+    <DirectoryRef Id="ROOTDIRECTORY">
+
+      <Component Id="Id3Tag.Net.dll" Guid="{174FDE80-1FBC-44F8-9CFF-410CDC145AF5}" DiskId="1">
+        <File Id="Id3Tag.Net.dll" Name="Id3Tag.Net.dll" KeyPath="yes" Source="..\..\..\MediaControl.Host.MediaCenter\bin\$(var.BuildPlatform)\$(var.BuildType)\Id3Tag.Net.dll" Checksum="yes" Vital="yes" Assembly=".net"/>
+      </Component>
+      
+      <Component Id="Interop.WMPLib.dll" Guid="{4970979C-BDCA-4A8E-BDE0-8C10DA57A281}" DiskId="1">
+        <File Id="Interop.WMPLib.dll" Name="Interop.WMPLib.dll" KeyPath="yes" Source="..\..\..\MediaControl.Host.MediaCenter\bin\$(var.BuildPlatform)\$(var.BuildType)\Interop.WMPLib.dll" Checksum="yes" Vital="yes" Assembly=".net"/>
+      </Component>
+
+      <Component Id="CoreAudioApi.dll" Guid="{B8433129-003F-4706-B984-02F3507CC847}" DiskId="1">
+        <File Id="CoreAudioApi.dll" Name="CoreAudioApi.dll" KeyPath="yes" Source="..\..\..\MediaControl.Host.MediaCenter\bin\$(var.BuildPlatform)\$(var.BuildType)\CoreAudioApi.dll" Checksum="yes" Vital="yes" Assembly=".net"/>
+      </Component>
+      
+      <Component Id="MediaControl.Host.MediaCenter.dll" Guid="{AB7427AE-CD7A-4C5F-B241-265E6406512E}" DiskId="1">
+        <File Id="MediaControl.Host.MediaCenter.dll" Name="MediaControl.Host.MediaCenter.dll" KeyPath="yes" Source="..\..\..\MediaControl.Host.MediaCenter\bin\$(var.BuildPlatform)\$(var.BuildType)\MediaControl.Host.MediaCenter.dll" Checksum="yes" Vital="yes" Assembly=".net"/>
+        
+        <fire:FirewallException Id="FWX1" Name="Remotive Server" Scope="any"
+           Port="8888" IgnoreFailure="yes" Protocol="tcp" Profile="all"/>
+      </Component>
+
+      <Component Id="MediaControl.Common.dll" Guid="{889758E9-BAE3-4FC0-9B47-62B6D0FA2C5A}" DiskId="1">
+        <File Id="MediaControl.Common.dll" Name="MediaControl.Common.dll" KeyPath="yes" Source="..\..\..\MediaControl.Host.MediaCenter\bin\$(var.BuildPlatform)\$(var.BuildType)\MediaControl.Common.dll" Checksum="yes" Vital="yes" Assembly=".net"/>
+      </Component>
+      
+      <Component Id="Registration.xml" Guid="{1331AE9D-78C7-46B2-91DA-25311AD74B37}" DiskId="1">
+        <File Id="Registration.xml" Name="Registration.xml" Source="..\..\..\MediaControl.Host.MediaCenter\Registration.xml" Checksum="no" />
+      </Component>
+      <Component Id="Application.png" Guid="{C00C496A-4D22-43E1-8EC5-4D06BEF68781}" DiskId="1">
+        <File Id="Application.png" Name="Application.png" KeyPath="yes" Source="..\..\..\MediaControl.Host.MediaCenter\Application.png" Checksum="no" />
+      </Component>
+    </DirectoryRef>
+
+    <Feature Id="ROOTFEATURE" Title="RemotiveMediaCenter" Level="1">
+      <ComponentRef Id="Id3Tag.Net.dll" />
+      <ComponentRef Id="Interop.WMPLib.dll" />
+      <ComponentRef Id="MediaControl.Host.MediaCenter.dll" />
+      <ComponentRef Id="MediaControl.Common.dll" />
+      <ComponentRef Id="CoreAudioApi.dll" />
+      <ComponentRef Id="Registration.xml" />
+      <ComponentRef Id="Application.png" />
+      
+    </Feature>
+    <Media Id="1" Cabinet="RemotiveServer.cab" EmbedCab="yes" />
+
+    <CustomAction Id="CA_AddNamespace" BinaryKey="BIN_CustomActions" DllEntry="AddNamespace" Execute="deferred" Impersonate="no"  Return="check" />
+    <CustomAction Id="CA_RemoveNamespace" BinaryKey="BIN_CustomActions" DllEntry="RemoveNamespace" Execute="deferred" Impersonate="no"  Return="ignore" />
+
+    <Binary Id="BIN_CustomActions" SourceFile="$(var.ProjectDir)..\MediaControl.Host.Installer.CustomActions\bin\$(var.Configuration)\MediaControl.Host.Installer.CustomActions.CA.dll" />
+
+    <CustomAction Id="CA_RegisterMceApp_Unregister_Install_Cmd" Property="CA_RegisterMceApp_Unregister_Install" Value="&quot;[REGISTERMCEAPP]&quot; /u /allusers &quot;[#Registration.xml]&quot;"/>
+    <CustomAction Id="CA_RegisterMceApp_Unregister_Uninstall_Cmd" Property="CA_RegisterMceApp_Unregister_Uninstall" Value="&quot;[REGISTERMCEAPP]&quot; /u /allusers &quot;[#Registration.xml]&quot;"/>
+    <CustomAction Id="CA_RegisterMceApp_Register_Cmd" Property="CA_RegisterMceApp_Register" Value="&quot;[REGISTERMCEAPP]&quot; /allusers &quot;[#Registration.xml]&quot;"/>
+    <CustomAction Id="CA_RegisterMceApp_Rollback_Cmd" Property="CA_RegisterMceApp_Rollback" Value="&quot;[REGISTERMCEAPP]&quot; /u /allusers &quot;[#Registration.xml]&quot;"/>
+    <CustomAction Id="CA_RegisterMceApp_Unregister_Install" BinaryKey="WixCA" DllEntry="CAQuietExec" Execute="deferred" Return="ignore" Impersonate="no"/>
+    <CustomAction Id="CA_RegisterMceApp_Unregister_Uninstall" BinaryKey="WixCA" DllEntry="CAQuietExec" Execute="deferred" Return="ignore" Impersonate="no"/>
+    <CustomAction Id="CA_RegisterMceApp_Register" BinaryKey="WixCA" DllEntry="CAQuietExec" Execute="deferred" Return="check" Impersonate="no"/>
+    <CustomAction Id="CA_RegisterMceApp_Rollback" BinaryKey="WixCA" DllEntry="CAQuietExec" Execute="rollback" Return="ignore" Impersonate="no"/>
+    
+    <InstallExecuteSequence>
+      <Custom Action="CA_BlockOlderVersionInstall" After="FindRelatedProducts">     <![CDATA[NEWERVERSIONDETECTED]]>    </Custom>
+      
+      <RemoveExistingProducts After="InstallFinalize" />
+      <LaunchConditions After="AppSearch"/>
+      <Custom Action="CA_ErrWrongWindowsVersion" Before="CostInitialize"><![CDATA[(NOT VersionNT >= 600 OR NOT MCEINSTALLVERSION >= "5.0" OR NOT REGISTERMCEAPP) AND NOT Installed]]></Custom>
+      <!--<Custom Action="CA_ErrWrongDotNetVersion" Before="CostInitialize"><![CDATA[(NOT DOTNETVERSION >= "3.5"]]></Custom>-->
+      <Custom Action="CA_RegisterMceApp_Unregister_Install_Cmd" After="CostFinalize">     <![CDATA[NOT REMOVE]]>    </Custom>
+      <Custom Action="CA_RegisterMceApp_Unregister_Uninstall_Cmd" After="CA_RegisterMceApp_Unregister_Install_Cmd">     <![CDATA[REMOVE]]>    </Custom>
+      <Custom Action="CA_RegisterMceApp_Register_Cmd" After="CA_RegisterMceApp_Unregister_Uninstall_Cmd"><![CDATA[NOT REMOVE]]></Custom>
+      <Custom Action="CA_RegisterMceApp_Rollback_Cmd" After="CA_RegisterMceApp_Register_Cmd">     <![CDATA[NOT REMOVE]]>    </Custom>
+      <Custom Action="CA_RegisterMceApp_Unregister_Uninstall" Before="RemoveFiles">     <![CDATA[REMOVE]]>    </Custom>
+      <Custom Action="CA_RegisterMceApp_Rollback" After="InstallFiles">     <![CDATA[NOT REMOVE]]>    </Custom>
+      <Custom Action="CA_RegisterMceApp_Unregister_Install" After="CA_RegisterMceApp_Rollback">     <![CDATA[NOT REMOVE]]>    </Custom>
+      <Custom Action="CA_RegisterMceApp_Register" After="CA_RegisterMceApp_Unregister_Install">     <![CDATA[NOT REMOVE]]>    </Custom>
+
+      <Custom Action="CA_AddNamespace" Before="InstallFinalize" ><![CDATA[NOT REMOVE]]> </Custom>
+      <Custom Action="CA_RemoveNamespace" Before="InstallFinalize"><![CDATA[REMOVE]]> </Custom>
+      
+    </InstallExecuteSequence>
+    <InstallUISequence>
+      <Custom Action="CA_BlockOlderVersionInstall" After="FindRelatedProducts">     <![CDATA[NEWERVERSIONDETECTED]]>    </Custom>
+      <Custom Action="CA_ErrWrongWindowsVersion" Before="CostInitialize"><![CDATA[(NOT VersionNT >= 600 OR NOT MCEINSTALLVERSION >= "5.0" OR NOT REGISTERMCEAPP) AND NOT Installed]]></Custom>
+      <!--<Custom Action="CA_ErrWrongDotNetVersion" Before="CostInitialize"><![CDATA[(NOT DOTNETVERSION >= "3.5.0.0"]]></Custom>-->
+    </InstallUISequence>
+    <Property Id="ARPHELPLINK" Value="!(loc.Property_ArpHelpLink)" />
+    <Property Id="ARPURLINFOABOUT" Value="!(loc.Property_ArpUrlInfoAbout)" />
+    <Property Id="ALLUSERS">    <![CDATA[1]]>   </Property>
+    <!--<Property Id="DOTNETVERSION" Secure="yes">
+      <RegistrySearch Id="DotNetInstallRegKey" Root="HKLM" Key="SOFTWARE\Microsoft\NET Framework Setup\NDP\V3.5" Name="Version" Type="raw"/>
+    </Property>-->
+    <Property Id="MCEINSTALLVERSION" Secure="yes">
+      <RegistrySearch Id="MceInstallRegKey" Root="HKLM" Key="SOFTWARE\Microsoft\Windows\CurrentVersion\Media Center" Name="Ident" Type="raw"/>
+    </Property>
+    <Property Id="REGISTERMCEAPP" Secure="yes">
+      <DirectorySearch Id="EhomeDirectory" Path="[WindowsFolder]\ehome">
+        <FileSearch Id="RegisterMceAppExe" Name="RegisterMceApp.exe" />
+      </DirectorySearch>
+    </Property>
+    <Property Id="WIXUI_INSTALLDIR" Value="ROOTDIRECTORY"/>
+    <UIRef Id="WixUI_InstallDir"/>
+    <WixVariable Id="WixUILicenseRtf" Value="License.rtf" />
+  </Product>
+</Wix>

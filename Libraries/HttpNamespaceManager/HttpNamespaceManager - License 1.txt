@@ -1,0 +1,44 @@
+Retrieved from http://blogs.msdn.com/b/paulwh/archive/2007/05/04/addressaccessdeniedexception-http-could-not-register-url-http-8080.aspx
+on 10/10/2010
+
+A while back, when I was first doing WCF development I ran into the following exception:
+
+AddressAccessDeniedException: HTTP could not register URL http://+:8080/<…>.  Your process does not have access rights to this namespace.
+
+The exception message included a link to an MSDN article that explained the concept of HTTP Namespace Reservations. Unfortunately the page suggests using an outdated, and not very user friendly tool called HttpCfg.exe to set up the namespace reservations. Even more unfortunate is the fact that this tool requires the user to enter a Security Descriptor Definition Language (SDDL) string by hand. Now, while I do enjoy the fact that I can now consider myself a member of the relatively small club of people that can read and write SDDL strings, this was not something I was especially excited about taking time away from the project at hand to do. Unfortunately search for help on the internet yielded more hurt than help.
+
+What Not To Do
+
+Upon performing my internet search, I ran straight into Mark Michaelis' post Windows Communication Foundation with Windows Vista and UAC. Now, generally speaking, I like Mark a lot, and he post a lot of good stuff on his blog. However, I am ethically opposed to what he is suggesting in his blog. Adding a manifest to your app to force elevation in Windows Vista is absolutely not what you should do! If you have a web serivce that has to run as Administrator then you are doing something wrong. In fact I hope you aren't even running as an Administrator account when you're developing (although aparently the Visual Studio team doesn't agree with me).
+
+What To Do
+
+Option 1: If you're on Windows Vista, you can use netsh. Nicholas Allen has details on his blog, as does Kenny Wolf.
+
+Option 2: If you're not on Vista, or you want to set permissions as part of the setup process, take a look at the source code Keith Brown has posted on his blog.
+
+Option 3: If you want a GUI based on C# code similar to that on Keith's blog, with a more flexible SDDL object model, then check out my tool, HttpNamespaceManager. 
+
+HttpNamespaceManager
+
+This is not an official Microsoft tool, and should be considered sample code (see disclaimer below).
+
+HttpNamespaceManager is available  as either source code or an executable (both are in the attached zip file). It is licensed under the creative commons attribution license and is free to use, modify, and redistribute for commercial or non-commercial purposes. The project is divided into an API for managing HTTP Namespaces, including an object model for ACLs and Security Descriptors, and a UI with automatic elevation in Windows Vista for operations that require administrative privledge.
+
+Requires .Net Framework 3.0 to run. Visual Studio 2005 & .Net Framework 3.0 to build.
+
+
+
+This screen shot shows the start page of the Http Namespace Manager. All of the actions (Add/Edit/Remove) require elevation. Double clicking an item is the same as clicking the Edit button. The Remove button removes the entry permanently and without confirmation, so use caution.
+
+
+
+When the Add button is clicked an input box is displayed in which the HTTP Namespace URL should be entered.
+
+
+
+When the Edit button is clicked the following dialog is displayed. You must select a user or group in the top half of the form in order to set the permissions for it.
+
+Disclaimer
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

@@ -1,0 +1,19 @@
+﻿<UserControl x:Class="Sharkfist.Phone.SilverlightCore.Settings.TextSetting"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:Sharkfist.Phone.SilverlightCore.Settings"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    x:Name="this"
+    d:DesignHeight="480" d:DesignWidth="480">
+    
+	<StackPanel VerticalAlignment="Top">
+        <TextBlock TextWrapping="NoWrap" Text="{Binding ElementName=this, Path=SettingName}" FontSize="{StaticResource PhoneFontSizeNormal}" 
+                   FontFamily="{StaticResource PhoneFontFamilyNormal}" Foreground="{StaticResource PhoneSubtleBrush}" Margin="13,13,13,-7"/>
+        <TextBox x:Name="input" TextWrapping="NoWrap" Text="{Binding ElementName=this, Path=SettingValue, Mode=TwoWay, UpdateSourceTrigger=Default}" InputScope="Url"/>
+	</StackPanel>
+</UserControl>

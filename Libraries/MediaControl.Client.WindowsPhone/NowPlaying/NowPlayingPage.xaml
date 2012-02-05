@@ -1,0 +1,98 @@
+﻿<phone:MediaPhonePage
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:mpc="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:this="clr-namespace:MediaControl.Client.WindowsPhone.NowPlaying"
+    xmlns:phone="clr-namespace:MediaControl.Client.WindowsPhone"
+    xmlns:converters="clr-namespace:MediaControl.Client.WindowsPhone.ValueConverters" 
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    shell:SystemTray.IsVisible="True"
+    x:Class="MediaControl.Client.WindowsPhone.NowPlaying.NowPlayingPage"
+    mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="800"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}" Height="800">
+	
+    <d:DesignProperties.DataContext>
+        <this:NowPlayingSampleViewModel/>
+    </d:DesignProperties.DataContext>
+
+    <!--Page transition animation-->
+    <phone:MediaPhonePage.Resources>
+
+    	<converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter1"/>
+
+    	<converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+
+    	<converters:TrackAlbumConverter x:Key="TrackAlbumConverter"/>
+
+    	<converters:DefaultImageConverter x:Key="DefaultImageConverter"/>
+    	<converters:LowercaseConverter x:Key="lowercase"/>
+    	<converters:UppercaseConverter x:Key="uppercase"/>
+    	<converters:TimeSpanConverter x:Key="timespan"/>
+    	<converters:AlbumTitleConverter x:Key="AlbumTitleConverter"/>
+
+    	<converters:PlayingVisibilityConverter x:Key="playing"/>
+    	<converters:UnknownPlaybackVisibilityConverter x:Key="stopped"/>
+
+    </phone:MediaPhonePage.Resources>
+
+    <!--Data context is set to sample data above-->
+    <Grid x:Name="LayoutRoot" Margin="0,30,0,0">
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="4"/>
+            <RowDefinition Height="0.926*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="72"/>
+        </Grid.RowDefinitions>
+
+        <!--TitleGrid is the name of the application and page title-->
+
+        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="24,24,0,12">
+        	<TextBlock Style="{StaticResource PhoneTextNormalStyle}" FontFamily="Segoe WP Semibold" Text="REMOTIVE" Margin="0,0,12,0"/>
+        	<TextBlock Margin="-3,-8,0,0" Style="{StaticResource PhoneTextTitle1Style}" FontFamily="Segoe WP Light" Text="now playing"/>
+        </StackPanel>
+        <ProgressBar Grid.Row="1" Style="{StaticResource PerformanceProgressBar}" VerticalAlignment="Top" Background="{StaticResource PhoneAccentBrush}" Foreground="{StaticResource PhoneAccentBrush}" Margin="0,0,0,12" Visibility="{Binding IsBusy, Converter={StaticResource BoolToVisibilityConverter1}}" IsIndeterminate="{Binding IsBusy}"/>
+
+        <StackPanel Grid.Row="2" Margin="24,-12,24,0" VerticalAlignment="Bottom"
+                    Visibility="{Binding CurrentMediaState, Converter={StaticResource playing}}">
+            <Border BorderThickness="1" Height="400" Width="400" Margin="0,0,0,4" HorizontalAlignment="Left" VerticalAlignment="Bottom">
+            	<phone:AlbumControl HorizontalAlignment="Stretch" Height="Auto" VerticalAlignment="Stretch" Width="Auto" AlbumArt="{Binding CurrentAlbumArt, Mode=OneWay}"/>
+            </Border>
+            <ProgressBar x:Name="prbPlayback" Value="{Binding EstimatedPlaybackPercent}" 
+                         Foreground="{StaticResource PhoneAccentBrush}" Padding="0" Width="400" HorizontalAlignment="Left"/>
+
+            <Grid Grid.Row="4" Width="400" HorizontalAlignment="Left" >
+                <Grid.ColumnDefinitions>
+                	<ColumnDefinition Width="Auto"/>
+                	<ColumnDefinition Width="*"/>
+                	<ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock x:Name="textPosition" Text="{Binding EstimatedPlaybackProgress, Converter={StaticResource timespan}}" 
+                           Grid.Column="0"/>
+                <TextBlock x:Name="textLength"
+                           Text="{Binding CurrentTimeRemaining, Converter={StaticResource timespan}}" Grid.Column="2"/>
+            </Grid>
+        </StackPanel>
+        <StackPanel Grid.Row="3" Margin="24,0,0,12" VerticalAlignment="Bottom"
+                    Visibility="{Binding CurrentMediaState, Converter={StaticResource playing}}">
+        	<TextBlock x:Name="trackTitle" 
+        		Foreground="{StaticResource PhoneForegroundBrush}" FontFamily="{StaticResource PhoneFontFamilySemiLight}" Text="{Binding CurrentMediaState.CurrentTrack.Title}" FontSize="40"/>
+        	<TextBlock x:Name="albumTitle"
+        		Text="{Binding CurrentMediaState.CurrentTrack, Converter={StaticResource TrackAlbumConverter}}" 
+        		Foreground="{StaticResource PhoneForegroundBrush}" LineStackingStrategy="BlockLineHeight" 
+        		LineHeight="35" FontFamily="{StaticResource PhoneFontFamilySemiLight}" 
+        		FontSize="{StaticResource PhoneFontSizeMedium}" Margin="0,-2,0,0" Padding="0"/>
+        </StackPanel>
+        <TextBlock TextWrapping="Wrap" Text="There is nothing currently playing." Foreground="{StaticResource PhoneSubtleBrush}" 
+                   VerticalAlignment="Center" Grid.RowSpan="4" HorizontalAlignment="Center" FontFamily="{StaticResource PhoneFontFamilyLight}" 
+                   FontSize="{StaticResource PhoneFontSizeExtraLarge}" Margin="20,0"
+                   Visibility="{Binding CurrentMediaState, Converter={StaticResource stopped}}"/>
+    </Grid>
+
+</phone:MediaPhonePage>

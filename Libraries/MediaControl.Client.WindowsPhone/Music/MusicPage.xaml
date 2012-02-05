@@ -1,0 +1,32 @@
+﻿<phone:MediaPhonePage xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+                      xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone" 
+                      xmlns:mpc="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone" 
+                      xmlns:phoneNavigation="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone" 
+                      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+                      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+                      xmlns:this="clr-namespace:MediaControl.Client.WindowsPhone.Music" 
+                      xmlns:albums="clr-namespace:MediaControl.Client.WindowsPhone.Albums" 
+                      xmlns:phone="clr-namespace:MediaControl.Client.WindowsPhone" 
+                      xmlns:MediaControl_Client_WindowsPhone_ValueConverters="clr-namespace:MediaControl.Client.WindowsPhone.ValueConverters" 
+                      xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
+                      x:Class="MediaControl.Client.WindowsPhone.Music.MusicPage"
+                      SupportedOrientations="Portrait" d:DesignWidth="480" d:DesignHeight="800" mc:Ignorable="d"
+                      x:Name="mediaPhonePage" shell:SystemTray.IsVisible="True">
+
+    <Grid x:Name="ContentGrid" Margin="0,30,0,72">
+    	<controls:Pivot x:Name="pivot" Title="REMOTIVE" FontSize="{StaticResource PhoneFontSizeMedium}" FontFamily="{StaticResource PhoneFontFamilyNormal}"
+                        SelectionChanged="pivot_SelectionChanged" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+    		<controls:PivotItem Header="albums" Margin="12,0">
+                <this:AlbumsPanel Navigate="panel_Navigate" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+            </controls:PivotItem>
+    		<controls:PivotItem Header="artists" Margin="12,0">
+                <this:ArtistsPanel x:Name="artistsPanel" Navigate="panel_Navigate" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+            </controls:PivotItem>
+    		<controls:PivotItem Header="album artists" Margin="12,0">
+                <this:AlbumArtistsPanel Navigate="panel_Navigate" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+            </controls:PivotItem>
+    	</controls:Pivot>
+    </Grid>
+    
+</phone:MediaPhonePage>

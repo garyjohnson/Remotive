@@ -1,0 +1,486 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{19E2491F-E701-4BCD-88F7-78D8EF1FCFFA}</ProjectGuid>
+    <ProjectTypeGuids>{C089C8C0-30E0-4E22-80C0-CE093F111A43};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MediaControl.Client.WindowsPhone</RootNamespace>
+    <AssemblyName>MediaControl.Client.WindowsPhone</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <TargetFrameworkProfile>WindowsPhone</TargetFrameworkProfile>
+    <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
+    <SilverlightApplication>true</SilverlightApplication>
+    <SupportedCultures>
+    </SupportedCultures>
+    <XapOutputs>true</XapOutputs>
+    <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
+    <XapFilename>MediaControl.Client.WindowsPhone.xap</XapFilename>
+    <SilverlightManifestTemplate>Properties\AppManifest.xml</SilverlightManifestTemplate>
+    <SilverlightAppEntry>MediaControl.Client.WindowsPhone.App</SilverlightAppEntry>
+    <ValidateXaml>true</ValidateXaml>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+    <Utf8Output>true</Utf8Output>
+    <ExpressionBlendVersion>4.0.20901.0</ExpressionBlendVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Phone" />
+    <Reference Include="Microsoft.Phone.Controls, Version=7.0.0.0, Culture=neutral, PublicKeyToken=24eec0d8c86cda1e, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Phone.Interop" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Servicemodel" />
+    <Reference Include="System.Windows" />
+    <Reference Include="mscorlib" />
+    <Reference Include="system" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Windows.Interactivity, Version=3.7.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Serialization" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AlbumArtCache.cs" />
+    <Compile Include="AlbumControl.xaml.cs">
+      <DependentUpon>AlbumControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AlbumListViewItem.xaml.cs">
+      <DependentUpon>AlbumListViewItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CloseApplicationException.cs" />
+    <Compile Include="ConnectedPhonePage.cs" />
+    <Compile Include="ConnectionPopup.xaml.cs">
+      <DependentUpon>ConnectionPopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ConnectionState.cs" />
+    <Compile Include="ConnectionStateConverter.cs" />
+    <Compile Include="EasySlider.cs" />
+    <Compile Include="Error\ErrorPage.xaml.cs">
+      <DependentUpon>ErrorPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ListViewItem.xaml.cs">
+      <DependentUpon>ListViewItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ListViewItemWithDetails.xaml.cs">
+      <DependentUpon>ListViewItemWithDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ListViewItemBase.cs" />
+    <Compile Include="Albums\AlbumsPage.xaml.cs">
+      <DependentUpon>AlbumsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Music\AlbumArtistHeightConverter.cs" />
+    <Compile Include="Music\AlbumsSampleViewModel.cs" />
+    <Compile Include="Music\AlbumsViewModel.cs" />
+    <Compile Include="Music\Hack.cs" />
+    <Compile Include="Services\IMediaStateService.cs" />
+    <Compile Include="Services\IRequestService.cs" />
+    <Compile Include="Services\RequestService.MediaLibrary.cs" />
+    <Compile Include="Services\RequestService.MediaPlayback.cs" />
+    <Compile Include="Services\MediaStateService.cs" />
+    <Compile Include="Music\AlbumArtistControl.xaml.cs">
+      <DependentUpon>AlbumArtistControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Music\AlbumClickedArgs.cs" />
+    <Compile Include="Music\ArtistsSampleViewModel.cs" />
+    <Compile Include="Music\MusicViewModel.cs" />
+    <Compile Include="NavigationPanel.cs" />
+    <Compile Include="PageState.cs" />
+    <Compile Include="Album\AlbumPage.xaml.cs">
+      <DependentUpon>AlbumPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Music\AlbumsPanel.xaml.cs">
+      <DependentUpon>AlbumsPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExtensionMethods.cs" />
+    <Compile Include="Music\ArtistsPanel.xaml.cs">
+      <DependentUpon>ArtistsPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Music\AlbumArtistsPanel.xaml.cs">
+      <DependentUpon>AlbumArtistsPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MediaPhonePage.cs" />
+    <Compile Include="Music\MusicPage.xaml.cs">
+      <DependentUpon>MusicPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PlaybackContentControl.xaml.cs">
+      <DependentUpon>PlaybackContentControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\MediaLibrary\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\MediaPlayback\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Settings\IsNullOrEmptyConverter.cs" />
+    <Compile Include="Settings\SettingsPage.xaml.cs">
+      <DependentUpon>SettingsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Settings\SettingsPopup.xaml.cs">
+      <DependentUpon>SettingsPopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SplashScreen\SplashScreen.xaml.cs">
+      <DependentUpon>SplashScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TrackListViewItem.xaml.cs">
+      <DependentUpon>TrackListViewItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ValueConverters\AlbumTitleConverter.cs" />
+    <Compile Include="ValueConverters\BoolToVisibilityConverter.cs" />
+    <Compile Include="ValueConverters\DefaultImageConverter.cs" />
+    <Compile Include="ValueConverters\DefaultTextConverter.cs" />
+    <Compile Include="ValueConverters\LeadingZeroConverter.cs" />
+    <Compile Include="ValueConverters\LowercaseConverter.cs" />
+    <Compile Include="Services\RequestService.cs" />
+    <Compile Include="NowPlaying\NowPlayingPage.xaml.cs">
+      <DependentUpon>NowPlayingPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ValueConverters\NullToOpacityConverter.cs" />
+    <Compile Include="ValueConverters\NullToVisibilityConverter.cs" />
+    <Compile Include="ValueConverters\PlaybackStateImageConverter.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ValueConverters\PlayingVisibilityConverter.cs" />
+    <Compile Include="ValueConverters\UnknownPlaybackVisibilityConverter.cs" />
+    <Compile Include="ValueConverters\TimeSpanConverter.cs" />
+    <Compile Include="ValueConverters\TrackAlbumConverter.cs" />
+    <Compile Include="ValueConverters\UppercaseConverter.cs" />
+    <Compile Include="Music\AlbumArtistsViewModel.cs" />
+    <Compile Include="Albums\ArtistAlbumsViewModel.cs" />
+    <Compile Include="Album\AlbumViewModel.cs" />
+    <Compile Include="Music\ArtistsViewModel.cs" />
+    <Compile Include="Albums\ArtistAlbumsSampleViewModel.cs" />
+    <Compile Include="Album\AlbumSampleViewModel.cs" />
+    <Compile Include="Music\AlbumArtistsSampleViewModel.cs" />
+    <Compile Include="NowPlaying\NowPlayingSampleViewModel.cs" />
+    <Compile Include="NowPlaying\NowPlayingViewModel.cs" />
+    <Compile Include="ValueConverters\VolumeLabelConverter.cs" />
+    <Compile Include="ViewModel.cs" />
+    <Compile Include="VolumePopup.xaml.cs">
+      <DependentUpon>VolumePopup.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </ApplicationDefinition>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\AppManifest.xml">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\WMAppManifest.xml">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MediaLibrary\MediaControl.Client.WindowsPhone.MediaLibrary.GetAlbumArtByAlbumResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MediaLibrary\MediaControl.Client.WindowsPhone.MediaLibrary.GetAlbumArtByTrackResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MediaLibrary\MediaControl.Client.WindowsPhone.MediaLibrary.GetAlbumArtistCountResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MediaLibrary\MediaControl.Client.WindowsPhone.MediaLibrary.GetAlbumArtistRangeResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MediaLibrary\MediaControl.Client.WindowsPhone.MediaLibrary.GetAlbumCountResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MediaLibrary\MediaControl.Client.WindowsPhone.MediaLibrary.GetAlbumRangeResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MediaLibrary\MediaControl.Client.WindowsPhone.MediaLibrary.GetAlbumsByArtistResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MediaLibrary\MediaControl.Client.WindowsPhone.MediaLibrary.GetArtistCountResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MediaLibrary\MediaControl.Client.WindowsPhone.MediaLibrary.GetArtistRangeResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MediaLibrary\MediaControl.Client.WindowsPhone.MediaLibrary.GetCapabilitiesResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MediaLibrary\MediaControl.Client.WindowsPhone.MediaLibrary.GetServerVersionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MediaLibrary\MediaControl.Client.WindowsPhone.MediaLibrary.GetTracksByAlbumArtistResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MediaLibrary\MediaControl.Client.WindowsPhone.MediaLibrary.GetTracksByArtistResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MediaLibrary\MediaControl.Client.WindowsPhone.MediaLibrary.GetTracksResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MediaLibrary\MediaControl.Client.WindowsPhone.MediaLibrary.PingResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MediaLibrary\MediaControl.Common.Music1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MediaLibrary\MediaControl.Common.Music11.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MediaLibrary\MediaControl1.wsdl" />
+    <None Include="Service References\MediaLibrary\MediaControl1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MediaLibrary\MediaControl11.wsdl" />
+    <None Include="Service References\MediaLibrary\MediaControl11.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MediaLibrary\service1.wsdl" />
+    <None Include="Service References\MediaLibrary\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MediaLibrary\service11.wsdl" />
+    <None Include="Service References\MediaLibrary\service11.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MediaLibrary\System.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MediaLibrary\System1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MediaPlayback\MediaControl.Client.WindowsPhone.MediaPlayback.GetCapabilitiesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MediaPlayback\MediaControl.Client.WindowsPhone.MediaPlayback.GetMediaStateResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MediaPlayback\MediaControl.Client.WindowsPhone.MediaPlayback.NextTrackResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MediaPlayback\MediaControl.Client.WindowsPhone.MediaPlayback.PauseResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MediaPlayback\MediaControl.Client.WindowsPhone.MediaPlayback.PingResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MediaPlayback\MediaControl.Client.WindowsPhone.MediaPlayback.PlayAlbumArtistResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MediaPlayback\MediaControl.Client.WindowsPhone.MediaPlayback.PlayAlbumResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MediaPlayback\MediaControl.Client.WindowsPhone.MediaPlayback.PlayArtistResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MediaPlayback\MediaControl.Client.WindowsPhone.MediaPlayback.PlayResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MediaPlayback\MediaControl.Client.WindowsPhone.MediaPlayback.PlayTrackResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MediaPlayback\MediaControl.Client.WindowsPhone.MediaPlayback.PlayTracksResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MediaPlayback\MediaControl.Client.WindowsPhone.MediaPlayback.PrevTrackResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MediaPlayback\MediaControl.Client.WindowsPhone.MediaPlayback.SetVolumeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MediaPlayback\MediaControl.Common.Music.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MediaPlayback\MediaControl.wsdl" />
+    <None Include="Service References\MediaPlayback\MediaControl.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MediaPlayback\service.wsdl" />
+    <None Include="Service References\MediaPlayback\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <Resource Include="Images\logo.png" />
+    <Resource Include="Images\SampleData.jpg" />
+    <Content Include="icons\appbar.save.rest.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Album\Album 1.png" />
+    <Content Include="Images\Album\Album 2.png" />
+    <Content Include="Images\Album\Album 3.png" />
+    <Content Include="Images\Album\Album 4.png" />
+    <Content Include="Images\Album\Album 5.png" />
+    <Content Include="Images\Album\Album 6.png" />
+    <Content Include="Images\Album\Album 7.png" />
+    <Content Include="Images\Album\Album 8.png" />
+    <Content Include="Images\Album\Album.jpg" />
+    <None Include="Service References\MediaLibrary\configuration91.svcinfo" />
+    <None Include="Service References\MediaLibrary\configuration.svcinfo" />
+    <None Include="Service References\MediaLibrary\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\MediaPlayback\configuration91.svcinfo" />
+    <None Include="Service References\MediaPlayback\configuration.svcinfo" />
+    <None Include="Service References\MediaPlayback\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Images\Volume.png" />
+    <Content Include="ServiceReferences.ClientConfig" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ApplicationIcon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Background.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\NextTrack.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Pause.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Play.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\PrevTrack.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="AlbumControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AlbumListViewItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ConnectionPopup.xaml">
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Error\ErrorPage.xaml">
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ListViewItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ListViewItemWithDetails.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Album\AlbumPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Albums\AlbumsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Music\AlbumArtistControl.xaml">
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Music\AlbumsPanel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Music\ArtistsPanel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Music\AlbumArtistsPanel.xaml">
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Music\MusicPage.xaml">
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="NowPlaying\NowPlayingPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PlaybackContentControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Settings\SettingsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Settings\SettingsPopup.xaml">
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="SplashScreen\SplashScreen.xaml">
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="VolumePopup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Resource Include="Themes\generic.xaml">
+      <SubType>Designer</SubType>
+    </Resource>
+    <Page Include="TrackListViewItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Sharkfist.Phone.SilverlightCore\Sharkfist.Phone.SilverlightCore.csproj">
+      <Project>{C640B769-DF92-4E45-AD4C-34EC4AAF3370}</Project>
+      <Name>Sharkfist.Phone.SilverlightCore</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\MediaLibrary\" />
+    <WCFMetadataStorage Include="Service References\MediaPlayback\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions />
+</Project>

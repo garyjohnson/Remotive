@@ -1,0 +1,68 @@
+﻿<UserControl xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:local="clr-namespace:MediaControl.Client.WindowsPhone"
+             xmlns:this="clr-namespace:MediaControl.Client.WindowsPhone.Settings"
+	xmlns:Sharkfist_Phone_SilverlightCore_Settings="clr-namespace:Sharkfist.Phone.SilverlightCore.Settings;assembly=Sharkfist.Phone.SilverlightCore"
+	x:Class="MediaControl.Client.WindowsPhone.SettingsPopup"
+	d:DesignWidth="480" d:DesignHeight="800" mc:Ignorable="d" RenderTransformOrigin="0.5,0.5">
+    
+    <UserControl.Resources>
+        <this:IsNullOrEmptyConverter x:Key="nullOrEmpty"/>
+    </UserControl.Resources>
+	<Grid x:Name="LayoutRoot" RenderTransformOrigin="0.5,0.5">
+		<Grid.RenderTransform>
+			<CompositeTransform TranslateY="0"/>
+		</Grid.RenderTransform>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="0.874*"/>
+			<RowDefinition Height="70"/>
+		</Grid.RowDefinitions>
+
+        <!--This is the name of the application and page title-->
+		<Rectangle Fill="{StaticResource PhoneBackgroundBrush}" Grid.RowSpan="3"/>
+
+        <!--This is the name of the application and page title-->
+		<Image x:Name="albumImage" Stretch="UniformToFill" Grid.RowSpan="3" HorizontalAlignment="Center" Opacity="0.1"/>
+
+        <!--This is the name of the application and page title-->
+		<StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="24,24,0,12">
+			<TextBlock Style="{StaticResource PhoneTextNormalStyle}" FontFamily="Segoe WP Semibold" Text="REMOTIVE" Margin="1,0,12,0"/>
+			<TextBlock Margin="-3,-8,0,0" Style="{StaticResource PhoneTextTitle1Style}" FontFamily="Segoe WP Light" Text="settings"/>
+		</StackPanel>
+
+        <!--This section is empty. Place new content here Grid.Row="1"-->
+		<Grid Grid.Row="1" x:Name="ContentGrid" Grid.RowSpan="2">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="0.636*"/>
+			</Grid.RowDefinitions>
+			<ItemsControl Margin="0,10,0,25">
+
+                <StackPanel VerticalAlignment="Top" Margin="10,0" Height="100">
+                    <TextBlock TextWrapping="NoWrap" Text="Server Address" FontSize="{StaticResource PhoneFontSizeNormal}" 
+                               FontFamily="{StaticResource PhoneFontFamilyNormal}" Foreground="{StaticResource PhoneSubtleBrush}" Margin="13,13,13,-7"/>
+                    <TextBox x:Name="address" TextWrapping="NoWrap" InputScope="Url" KeyDown="address_KeyDown"/>
+                </StackPanel>
+
+                <StackPanel VerticalAlignment="Top" Margin="10,0" Height="100">
+                    <TextBlock TextWrapping="NoWrap" Text="Server Port Number" FontSize="{StaticResource PhoneFontSizeNormal}" 
+                   FontFamily="{StaticResource PhoneFontFamilyNormal}" Foreground="{StaticResource PhoneSubtleBrush}" Margin="13,13,13,-7"/>
+                    <!-- InputScope is Url instead of Number because I want the black enter button-->
+                    <TextBox x:Name="port" TextWrapping="NoWrap" InputScope="Url" KeyDown="port_KeyDown"/>
+                </StackPanel>
+                
+            </ItemsControl>
+			<TextBlock x:Name="errorText" Grid.Row="1" TextWrapping="Wrap" Foreground="{StaticResource PhoneForegroundBrush}" Margin="20,0,20,20" FontFamily="{StaticResource PhoneFontFamilyLight}" FontSize="{StaticResource PhoneFontSizeMediumLarge}"/>
+		</Grid>
+		<Grid Grid.Row="2" Background="{StaticResource PhoneChromeBrush}">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition/>
+				<ColumnDefinition/>
+			</Grid.ColumnDefinitions>
+            <Button x:Name="okButton" Content="ok" d:LayoutOverrides="Width, Height" Click="Button_Click"/>
+        </Grid>
+	</Grid>
+</UserControl>

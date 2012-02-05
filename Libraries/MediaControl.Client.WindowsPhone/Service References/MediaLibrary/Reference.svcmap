@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="0b495a80-6b74-49cd-8769-a3043629cd1e" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>true</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>true</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>false</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8888/MediaLibrary/mex" Protocol="mex" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="MediaControl11.wsdl" MetadataType="Wsdl" ID="2efe255f-b298-4682-bfa7-3b41f8472c41" SourceId="1" SourceUrl="http://localhost:8888/MediaLibrary/mex" />
+    <MetadataFile FileName="service11.wsdl" MetadataType="Wsdl" ID="a897c0b8-42dd-4ef8-9d39-22c83ba8799e" SourceId="1" SourceUrl="http://localhost:8888/MediaLibrary/mex" />
+    <MetadataFile FileName="MediaControl11.xsd" MetadataType="Schema" ID="2c2e7ab8-a865-4268-afb2-7776809994a2" SourceId="1" SourceUrl="http://localhost:8888/MediaLibrary/mex" />
+    <MetadataFile FileName="service11.xsd" MetadataType="Schema" ID="2ab24f12-b4aa-46be-9476-c5a140d0aa38" SourceId="1" SourceUrl="http://localhost:8888/MediaLibrary/mex" />
+    <MetadataFile FileName="MediaControl.Common.Music11.xsd" MetadataType="Schema" ID="9186738b-a35d-4473-b071-357bf9c67410" SourceId="1" SourceUrl="http://localhost:8888/MediaLibrary/mex" />
+    <MetadataFile FileName="System.xsd" MetadataType="Schema" ID="f238c07c-9a1f-49e6-9457-33c1d342dabb" SourceId="1" SourceUrl="http://localhost:8888/MediaLibrary/mex" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

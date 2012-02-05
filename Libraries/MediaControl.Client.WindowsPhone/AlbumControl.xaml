@@ -1,0 +1,36 @@
+﻿<UserControl x:Class="MediaControl.Client.WindowsPhone.AlbumControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    d:DesignHeight="75" d:DesignWidth="75" Width="75" Height="75"
+             HorizontalAlignment="Left" VerticalAlignment="Top">
+    
+    <UserControl.Resources>
+        <Storyboard x:Name="ShowAlbumArt">
+            <DoubleAnimation Duration="0:0:0.7" To="0" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="grid" d:IsOptimized="True">
+                <DoubleAnimation.EasingFunction>
+                    <PowerEase EasingMode="EaseOut"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+        </Storyboard>
+        <Storyboard x:Name="HideAlbumArt">
+        	<DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="grid" d:IsOptimized="True"/>
+        </Storyboard>
+    </UserControl.Resources>
+    <Grid>
+        <Border BorderThickness="1">
+            <Image x:Name="image"/>
+        </Border>
+        <Grid x:Name="grid" Visibility="Collapsed">
+            <Rectangle x:Name="rectangle" Fill="{StaticResource PhoneAccentBrush}" CacheMode="BitmapCache"/>
+            <TextBlock x:Name="textBlock" TextWrapping="Wrap" Text="♫" Foreground="{StaticResource PhoneBackgroundBrush}" VerticalAlignment="Bottom" 
+                       HorizontalAlignment="Right" FontSize="{StaticResource PhoneFontSizeLarge}" Margin="0,0,2,0" FontFamily="{StaticResource PhoneFontFamilyLight}" 
+                       CacheMode="BitmapCache" TextOptions.TextHintingMode="Animated"/>
+        </Grid>
+    </Grid>
+</UserControl>

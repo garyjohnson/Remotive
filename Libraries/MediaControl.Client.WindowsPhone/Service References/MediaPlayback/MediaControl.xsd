@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://www.ggjonline.com/ServiceModel/MediaControl" elementFormDefault="qualified" targetNamespace="http://www.ggjonline.com/ServiceModel/MediaControl" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://schemas.datacontract.org/2004/07/MediaControl.Common.Music" />
+  <xs:element name="Play">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PlayResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/MediaControl.Common.Music" minOccurs="0" name="PlayResult" nillable="true" type="q1:MediaState" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Pause">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PauseResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/MediaControl.Common.Music" minOccurs="0" name="PauseResult" nillable="true" type="q2:MediaState" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NextTrack">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NextTrackResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/MediaControl.Common.Music" minOccurs="0" name="NextTrackResult" nillable="true" type="q3:MediaState" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PrevTrack">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PrevTrackResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/MediaControl.Common.Music" minOccurs="0" name="PrevTrackResult" nillable="true" type="q4:MediaState" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PlayTrack">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/MediaControl.Common.Music" minOccurs="0" name="track" nillable="true" type="q5:Track" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PlayTrackResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/MediaControl.Common.Music" minOccurs="0" name="PlayTrackResult" nillable="true" type="q6:MediaState" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMediaState">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMediaStateResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/MediaControl.Common.Music" minOccurs="0" name="GetMediaStateResult" nillable="true" type="q7:MediaState" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PlayTracks">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/MediaControl.Common.Music" minOccurs="0" name="trackQueue" nillable="true" type="q8:ArrayOfTrack" />
+        <xs:element minOccurs="0" name="enqueue" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PlayTracksResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/MediaControl.Common.Music" minOccurs="0" name="PlayTracksResult" nillable="true" type="q9:MediaState" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PlayArtist">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/MediaControl.Common.Music" minOccurs="0" name="artist" nillable="true" type="q10:Artist" />
+        <xs:element minOccurs="0" name="enqueue" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PlayArtistResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/MediaControl.Common.Music" minOccurs="0" name="PlayArtistResult" nillable="true" type="q11:MediaState" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PlayAlbumArtist">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/MediaControl.Common.Music" minOccurs="0" name="artist" nillable="true" type="q12:AlbumArtist" />
+        <xs:element minOccurs="0" name="enqueue" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PlayAlbumArtistResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/MediaControl.Common.Music" minOccurs="0" name="PlayAlbumArtistResult" nillable="true" type="q13:MediaState" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PlayAlbum">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/MediaControl.Common.Music" minOccurs="0" name="album" nillable="true" type="q14:Album" />
+        <xs:element minOccurs="0" name="enqueue" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PlayAlbumResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/MediaControl.Common.Music" minOccurs="0" name="PlayAlbumResult" nillable="true" type="q15:MediaState" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCapabilities">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCapabilitiesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/MediaControl.Common.Music" minOccurs="0" name="GetCapabilitiesResult" nillable="true" type="q16:MediaPlaybackCapabilities" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Ping">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PingResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetVolume">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="volume" type="xs:double" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetVolumeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/MediaControl.Common.Music" minOccurs="0" name="SetVolumeResult" nillable="true" type="q17:MediaState" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

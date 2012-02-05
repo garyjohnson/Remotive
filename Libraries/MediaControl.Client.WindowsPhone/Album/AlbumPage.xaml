@@ -1,0 +1,77 @@
+﻿<phone:MediaPhonePage
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:navigation="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:mpc="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:converters="clr-namespace:MediaControl.Client.WindowsPhone.ValueConverters"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:this="clr-namespace:MediaControl.Client.WindowsPhone.Album" 
+    xmlns:phone="clr-namespace:MediaControl.Client.WindowsPhone"
+	xmlns:Sharkfist_Phone_SilverlightCore="clr-namespace:Sharkfist.Phone.SilverlightCore;assembly=Sharkfist.Phone.SilverlightCore" 
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    x:Name="phoneApplicationPage" 
+    x:Class="MediaControl.Client.WindowsPhone.Album.AlbumPage"
+    shell:SystemTray.IsVisible="True"
+    SupportedOrientations="Portrait"
+    mc:Ignorable="d" d:DesignHeight="696" d:DesignWidth="480">
+
+    <phone:MediaPhonePage.Resources>
+    	<converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+    	<converters:AlbumTitleConverter x:Key="AlbumTitleConverter"/>
+    	<converters:UppercaseConverter x:Key="UppercaseConverter"/>
+    	<converters:LowercaseConverter x:Key="LowercaseConverter"/>
+    </phone:MediaPhonePage.Resources>
+
+    <d:DesingerProperties.DataContext>
+        <this:AlbumSampleViewModel/>
+    </d:DesingerProperties.DataContext>
+    
+    <Grid x:Name="LayoutRoot" Margin="0,30,0,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--This is the name of the application and page title-->
+        <Rectangle Fill="{StaticResource PhoneChromeBrush}" Grid.RowSpan="2"/>
+
+        <!--This is the name of the application and page title-->
+        <Image x:Name="albumImage" Stretch="UniformToFill" Grid.RowSpan="2" HorizontalAlignment="Center" Opacity="0.13"/>
+
+        <!--This is the name of the application and page title-->
+        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="24,24,0,12">
+            <TextBlock Text="{Binding Album, Converter={StaticResource AlbumTitleConverter}, Mode=OneWay}" Style="{StaticResource PhoneTextNormalStyle}" FontFamily="Segoe WP Semibold" Margin="0,0,12,0" Height="27"/>
+            <TextBlock Margin="-3,-8,0,0" Style="{StaticResource PhoneTextTitle1Style}" FontFamily="Segoe WP Light" Text="tracks"/>
+        </StackPanel>
+
+        <!--This section is empty. Place new content here Grid.Row="1"-->
+        <Grid Grid.Row="1" x:Name="ContentGrid" Margin="0,0,0,72">
+        	<Grid.RowDefinitions>
+        		<RowDefinition Height="Auto"/>
+        		<RowDefinition Height="0.957*"/>
+        	</Grid.RowDefinitions>
+                <ProgressBar Style="{StaticResource PerformanceProgressBar}" VerticalAlignment="Top" IsIndeterminate="{Binding IsBusy}" Visibility="{Binding IsBusy, Converter={StaticResource BoolToVisibilityConverter}}"/>
+                <ListBox x:Name="ListBoxOne" ItemsSource="{Binding Tracks}"
+                     SelectionChanged="ListBoxOne_SelectionChanged"
+                     Style="{StaticResource PhoneListBox}" Grid.RowSpan="2" BorderThickness="0" Margin="0,12,0,0">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <phone:TrackListViewItem TrackNumber="{Binding TrackNumber}" 
+                                                Text="{Binding Title}" Details="{Binding ArtistName}">
+                            <Sharkfist_Phone_SilverlightCore:ContextMenu.ContextMenu>
+                                <Sharkfist_Phone_SilverlightCore:ContextMenu>
+                                    <Sharkfist_Phone_SilverlightCore:ContextMenuItem Text="play" Click="play_Click" />
+                                    <Sharkfist_Phone_SilverlightCore:ContextMenuItem Text="add to now playing" Click="add_Click"/>
+                                    <!--<Sharkfist_Phone_SilverlightCore:ContextMenuItem Text="play"/>
+                                    <Sharkfist_Phone_SilverlightCore:ContextMenuItem Text="add to now playing"/>-->
+                                </Sharkfist_Phone_SilverlightCore:ContextMenu>
+                            </Sharkfist_Phone_SilverlightCore:ContextMenu.ContextMenu>
+                        </phone:TrackListViewItem>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Grid>
+    </Grid>
+</phone:MediaPhonePage>
